@@ -1,9 +1,15 @@
 import express from 'express'
 import logger from 'morgan'
 import userRouter from './routes/user.route.js'
+import { connectDb } from './utils/db.js'
+import dotenv from 'dotenv'
 
 
+
+dotenv.config({})
+console.log(process.env.database_link)
 const app = express()
+
 app.use(logger('dev'))
 
 
@@ -18,8 +24,8 @@ app.use("/api/user",userRouter)
 //application api
 // app.use("/api/user",userRoute)
 
-
-app.listen(3000,()=>{
+app.listen(process.env.PORT || 3001,()=>{
+    connectDb()
     console.log('server connected')
 })
 
