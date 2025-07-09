@@ -6,11 +6,16 @@ import dotenv from 'dotenv'
 
 
 
+
 dotenv.config({})
-console.log(process.env.database_link)
+
 const app = express()
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+// GOOGLE.COM/Q?search=fvnfdkjvndfkjbvkdf&name=fdsf
 
 app.use(logger('dev'))
+
 
 
 // testing apis
